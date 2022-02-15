@@ -1,0 +1,129 @@
+.shoppingBag{
+    display: flex;
+    padding:  50px 160px;
+}
+
+.main-heading{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+}
+
+.shoppingBag-left{
+    width: 844px;
+    margin: 0px 15px;
+}
+
+.shoppingBag-wrap{
+    display: flex;
+    border: 1px solid rgb(211, 203, 203);
+    justify-content: space-between;
+    margin: 20px 0px;
+}
+
+.itemImage img{
+    height: 170px;
+    width: 140px;
+}
+
+.itemPrice p{
+    font-weight: bold;
+    width: 90px;
+    text-align: center;
+}
+
+.itemPrice{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    text-align: center;
+    align-items: center;
+    padding: 0px 7px;
+}
+
+.shoppingBag-right{
+    width: 407px;
+    margin-top: 50px;
+}
+
+.order-details{
+    background-color: rgba(250,250,250,255);
+    padding: 30px 15px;
+    border: 1px solid rgb(211, 206, 206);
+}
+
+.flex{
+    display: flex;
+    justify-content: space-between;
+    margin: 20px 0px;
+}
+
+.flex-left{
+    width: 150px
+}
+
+.flex-right{  
+    width: 102px;  
+}
+
+.proceed button{
+    width: 100%;
+    background-color: rgba(213,162,73,255);
+    border: none;
+    color: white;
+    font-weight: bold;
+    font-size: 17px;
+    padding: 18px 0px;
+    margin: 15px 0px;
+}
+
+.continue-shopping{
+    background-color: rgba(213,162,73,255);
+    border: none;
+    color: white;
+    font-weight: 500;
+    font-size: 17px;
+    padding: 18px 18px;
+    margin: 50px 0px;
+}
+
+.flex-continue{
+    display: flex;
+    justify-content: center;
+}
+
+.wrap-else{
+    display: block;
+}
+
+.else-block{
+    padding: 50px 0px;
+}
+
+.wrap-else h1{
+    text-align: center;
+}
+
+.else{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.features{
+    display: flex;
+    border-top: 1px solid rgb(199, 192, 192);
+    border-bottom: 1px solid rgb(199, 192, 192);
+    padding: 20px 0px;
+}
+
+.feature{
+    margin: 0px 50px;
+    display: flex;
+    text-align: center;
+    align-items: center;
+
+}
+
+

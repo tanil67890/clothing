@@ -1,0 +1,70 @@
+.home-container{
+    font-family: 'Poppins', sans-serif;
+    padding: 50px;
+}
+
+.title{
+    font-weight: bold;
+    font-size: 25px;
+    color: black;
+}
+
+.wrap{
+    padding: 20px 0px;
+}
+
+.explore{
+    display: inline-flex;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    width: 300px;
+    padding: 20px;
+    font-size: 20px;
+    font-weight: 700;
+    color: white;
+    background-color: rgba(213,162,73,255);
+    border: none;
+    border-radius: 5px;
+    
+}
+
+.explore:hover{
+    border: 1px solid black;
+    cursor: pointer;
+}
+
+.cards{
+    display: grid;
+    grid-template-columns: auto auto auto auto auto;
+    grid-template-rows: 430px auto auto auto;
+}
+
+.card{
+    height: 400px ;
+    width: 240px;
+    cursor: pointer;
+}
+
+.card img{
+    height: 400px ;
+    width: 240px;
+}
+
+.cards-1{
+    display: grid;
+    grid-template-columns: auto auto auto auto auto;
+    grid-template-rows: 250px auto auto auto;
+}
+
+.card-1{    
+    height: 250px ;
+    width: 220px;
+    cursor: pointer;
+}
+
+.card-1 img{
+    height: 250px ;
+    width: 220px;
+}
+

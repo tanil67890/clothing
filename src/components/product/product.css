@@ -1,0 +1,46 @@
+.product{
+    text-align: center;
+    height: 500px;
+    margin: 12px 12px;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+}
+
+.product h4{
+    margin-block-start: 0;
+    margin-block-end: 0;
+    color: rgba(191,163,120,255);
+    text-decoration: none;
+}
+
+.product p{
+    margin-block-start: 0;
+    margin-block-end: 0;
+    text-decoration: none;
+}
+
+.product img{
+    height: 380px;
+    width: 300px;
+}
+
+.product-price{
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.offer-price{
+    display: inline-block;
+    color: rgba(40,167,69,255);
+    text-decoration: none;
+}
+
+.buy-now{
+    background-color: rgba(191,163,120,255);
+    border: none;
+    border-radius: 5px;
+    padding: 7px 30px;
+    font-weight: bold;
+}

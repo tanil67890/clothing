@@ -1,0 +1,26 @@
+*{
+    font-family: 'Open Sans Condensed', sans-serif;
+    font-family: 'Poppins', sans-serif;
+}
+
+.shop-home-container{
+    font-family: 'Poppins', sans-serif;
+    padding: 0px 0px;
+}
+
+.home-body{
+    display: flex
+}
+
+.home-left{
+    /* border: 1px solid black; */
+    padding: 50px;
+}
+
+.home-right{
+    /* border: 1px solid black; */
+    padding: 50px 0px;
+    display: flex;
+    display: grid;
+    grid-template-columns: 400px 400px 400px;
+}
