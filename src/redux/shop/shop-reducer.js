@@ -1,4 +1,3 @@
-import { useEffect } from "react";
 import * as actionTypes from "./shop-types";
 
 const INITIAL_STATE = {
@@ -1176,6 +1175,11 @@ const shopReducer = (state = INITIAL_STATE, action) => {
 
 
 
+
+
+
+
+
     case actionTypes.ADD_TO_CART:
       const product = state.products.find((item) => item.id === action.payload);
       const productInCart = state.bag.find((item) => item.id === action.payload) ? true : false;
@@ -1183,7 +1187,23 @@ const shopReducer = (state = INITIAL_STATE, action) => {
       let finalBagTotal = INITIAL_STATE.bagTotal;   
       
       if (productInCart === false) {
-        state.bag = state.bag.concat(product);
+        let newProductToBeAddedToBag = {
+          id: product.id,
+          type: product.type,
+          category: product.category,
+          gender: product.gender,
+          availableSizes: product.availableSizes,
+          color: product.color,
+          brand: product.brand,
+          name: product.name,
+          description: product.description,
+          price: product.price,
+          img: product.img,
+          offerPrice: product.offerPrice,
+          selectedSize: product.selectedSize,
+          selectedQuantity: product.selectedQuantity,
+        };
+        state.bag = state.bag.concat(newProductToBeAddedToBag);
         state.bag.forEach((bagItem) => {
           let discount = (bagItem.price - bagItem.offerPrice) * bagItem.selectedQuantity;
           totalDiscount += discount;
@@ -1217,7 +1237,23 @@ const shopReducer = (state = INITIAL_STATE, action) => {
           };
         }
         else{
-          state.bag = state.bag.concat(product);
+          let existingProdButNewSize = {
+            id: product.id,
+            type: product.type,
+            category: product.category,
+            gender: product.gender,
+            availableSizes: product.availableSizes,
+            color: product.color,
+            brand: product.brand,
+            name: product.name,
+            description: product.description,
+            price: product.price,
+            img: product.img,
+            offerPrice: product.offerPrice,
+            selectedSize: product.selectedSize,
+            selectedQuantity: product.selectedQuantity,
+          };
+          state.bag = state.bag.concat(existingProdButNewSize);
           state.bag.forEach((bagItem) => {
             let discount = (bagItem.price - bagItem.offerPrice) * bagItem.selectedQuantity;
             totalDiscount += discount;
