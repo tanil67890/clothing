@@ -1158,34 +1158,26 @@ const shopReducer = (state = INITIAL_STATE, action) => {
       };
 
     case actionTypes.UPDATE_SELECTED_SIZE:
-      return{
+      return {
         ...state,
         products: state.products.map((item) => {
-          if(item.id === action.payload.productID){
+          if (item.id === action.payload.productID) {
             item.selectedSize = action.payload.size;
             return item;
-          }
-          else{
+          } else {
             return item;
           }
-        })
-      }
-
-
-
-
-
-
-
-
-
+        }),
+      };
 
     case actionTypes.ADD_TO_CART:
       const product = state.products.find((item) => item.id === action.payload);
-      const productInCart = state.bag.find((item) => item.id === action.payload) ? true : false;
+      const productInCart = state.bag.find((item) => item.id === action.payload)
+        ? true
+        : false;
       let totalDiscount = INITIAL_STATE.bagDiscount;
-      let finalBagTotal = INITIAL_STATE.bagTotal;   
-      
+      let finalBagTotal = INITIAL_STATE.bagTotal;
+
       if (productInCart === false) {
         let newProductToBeAddedToBag = {
           id: product.id,
@@ -1205,7 +1197,8 @@ const shopReducer = (state = INITIAL_STATE, action) => {
         };
         state.bag = state.bag.concat(newProductToBeAddedToBag);
         state.bag.forEach((bagItem) => {
-          let discount = (bagItem.price - bagItem.offerPrice) * bagItem.selectedQuantity;
+          let discount =
+            (bagItem.price - bagItem.offerPrice) * bagItem.selectedQuantity;
           totalDiscount += discount;
           finalBagTotal += bagItem.price * bagItem.selectedQuantity;
         });
@@ -1217,26 +1210,47 @@ const shopReducer = (state = INITIAL_STATE, action) => {
           totalAmount: finalBagTotal - totalDiscount,
         };
       }
-    
-      if(productInCart === true){
+
+      if (productInCart === true) {
         let prodInBag = state.bag.find((item) => item.id === action.payload);
- 
-        if(prodInBag.selectedSize === product.selectedSize){
-          state.bag = state.bag.map((item) => item.id === action.payload ? { ...item, selectedQuantity: item.selectedQuantity + 1} : item)
-           state.bag.forEach((bagItem) => {
-             let discount = (bagItem.price - bagItem.offerPrice) * bagItem.selectedQuantity;
-             totalDiscount += discount;
-             finalBagTotal += bagItem.price * bagItem.selectedQuantity;
-           });
-          return{
+        let exactProdInBag = state.bag.find(
+          (item) =>
+            item.id === action.payload &&
+            item.selectedSize === product.selectedSize
+        )
+          ? true
+          : false;
+
+        if (
+          prodInBag.selectedSize === product.selectedSize ||
+          exactProdInBag === true
+        ) {
+          // state.bag = state.bag.map((item) => item.id === action.payload ? { ...item, selectedQuantity: item.selectedQuantity + 1} : item);
+          state.bag = state.bag.map((item) => {
+            if (
+              item.id === action.payload &&
+              item.selectedSize === product.selectedSize
+            ) {
+              item.selectedQuantity = item.selectedQuantity + 1;
+              return item;
+            } else {
+              return item;
+            }
+          });
+          state.bag.forEach((bagItem) => {
+            let discount =
+              (bagItem.price - bagItem.offerPrice) * bagItem.selectedQuantity;
+            totalDiscount += discount;
+            finalBagTotal += bagItem.price * bagItem.selectedQuantity;
+          });
+          return {
             ...state,
             bag: state.bag,
             bagTotal: finalBagTotal,
             bagDiscount: totalDiscount,
             totalAmount: finalBagTotal - totalDiscount,
           };
-        }
-        else{
+        } else {
           let existingProdButNewSize = {
             id: product.id,
             type: product.type,
@@ -1255,7 +1269,8 @@ const shopReducer = (state = INITIAL_STATE, action) => {
           };
           state.bag = state.bag.concat(existingProdButNewSize);
           state.bag.forEach((bagItem) => {
-            let discount = (bagItem.price - bagItem.offerPrice) * bagItem.selectedQuantity;
+            let discount =
+              (bagItem.price - bagItem.offerPrice) * bagItem.selectedQuantity;
             totalDiscount += discount;
             finalBagTotal += bagItem.price * bagItem.selectedQuantity;
           });
@@ -1265,12 +1280,10 @@ const shopReducer = (state = INITIAL_STATE, action) => {
             bagTotal: finalBagTotal,
             bagDiscount: totalDiscount,
             totalAmount: finalBagTotal - totalDiscount,
-          }      
-      }   
-    }
-      
+          };
+        }
+      }
 
-    
     case actionTypes.REMOVE_FROM_CART:
       state.bag = state.bag.filter((bagItem) => bagItem.id !== action.payload);
       let newTotalAmount = INITIAL_STATE.totalAmount;
