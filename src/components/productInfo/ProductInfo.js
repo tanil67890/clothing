@@ -10,16 +10,9 @@ function ProductInfo(props) {
 
    const filter = () => {
       const size = document.getElementById("selectedSize").value;
-      //setSelectedSize(size);
       props.updateSelectedSize(props.currentProduct.id, size);
       console.log(props); 
    };
-
-  // const filter = () => {
-  //   const size = document.getElementById("selectedSize").value;
-  //   props.updateSelectedSize(props.currentProduct.id, size);
-  //   console.log(props);
-  // }
 
   return (
     <div className="productInfo-container">
@@ -34,7 +27,7 @@ function ProductInfo(props) {
           <div className="select-size">
             <label htmlFor="selectedSize">Select Size</label>
 
-            <select defaultValue={props.currentProduct.availableSizes[0]} name="sizes" id="selectedSize" onChange={filter}>
+            <select value={props.currentProduct.selectedSize} name="sizes" id="selectedSize" onChange={filter}>
               {props.currentProduct.availableSizes.map((size, index) => {
                 return (
                   <option key={index} id="selectSize" value={size}>
